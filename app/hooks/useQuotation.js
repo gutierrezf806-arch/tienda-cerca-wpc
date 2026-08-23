@@ -2,10 +2,10 @@
 
 import { useCallback, useEffect, useState } from "react";
 
-const STORAGE_KEY = "tienda-cart";
-const CART_UPDATED_EVENT = "cart-updated";
+const STORAGE_KEY = "tienda-cotizacion";
+const QUOTATION_UPDATED_EVENT = "quotation-updated";
 
-function readCart() {
+function readQuotation() {
   if (typeof window === "undefined") return [];
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
@@ -15,36 +15,37 @@ function readCart() {
   }
 }
 
-function writeCart(items) {
+function writeQuotation(items) {
   if (typeof window === "undefined") return;
   try {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
   } catch {
     // localStorage unavailable (private mode, quota, etc.) — ignore
   }
-  window.dispatchEvent(new Event(CART_UPDATED_EVENT));
+  window.dispatchEvent(new Event(QUOTATION_UPDATED_EVENT));
 }
 
-export function useCart() {
-  const [cartItems, setCartItems] = useState([]);
+export function useQuotation() {
+  const [quotationItems, setQuotationItems] = useState([]);
 
   useEffect(() => {
-    setCartItems(readCart());
+    setQuotationItems(readQuotation());
 
-    const handleCartUpdated = () => setCartItems(readCart());
-    window.addEventListener(CART_UPDATED_EVENT, handleCartUpdated);
-    return () => window.removeEventListener(CART_UPDATED_EVENT, handleCartUpdated);
+    const handleQuotationUpdated = () => setQuotationItems(readQuotation());
+    window.addEventListener(QUOTATION_UPDATED_EVENT, handleQuotationUpdated);
+    return () =>
+      window.removeEventListener(QUOTATION_UPDATED_EVENT, handleQuotationUpdated);
   }, []);
 
   const persist = useCallback((items) => {
-    writeCart(items);
-    setCartItems(items);
+    writeQuotation(items);
+    setQuotationItems(items);
   }, []);
 
   const addItem = useCallback((product) => {
     const { id, name, price, size, color, quantity = 1 } = product;
 
-    const current = readCart();
+    const current = readQuotation();
     const existingIndex = current.findIndex(
       (item) => item.id === id && item.size === size && item.color === color
     );
@@ -58,47 +59,41 @@ export function useCart() {
           )
         : [...current, { id, name, price, quantity, size, color }];
 
-    writeCart(next);
-    setCartItems(next);
+    writeQuotation(next);
+    setQuotationItems(next);
   }, []);
 
   const removeItem = useCallback((productId, size, color) => {
-    const next = readCart().filter(
+    const next = readQuotation().filter(
       (item) => !(item.id === productId && item.size === size && item.color === color)
     );
-    writeCart(next);
-    setCartItems(next);
+    writeQuotation(next);
+    setQuotationItems(next);
   }, []);
 
   const updateQuantity = useCallback((productId, quantity) => {
-    const next = readCart().map((item) =>
+    const next = readQuotation().map((item) =>
       item.id === productId ? { ...item, quantity: Math.max(1, quantity) } : item
     );
-    writeCart(next);
-    setCartItems(next);
+    writeQuotation(next);
+    setQuotationItems(next);
   }, []);
 
-  const clearCart = useCallback(() => {
+  const clearQuotation = useCallback(() => {
     persist([]);
   }, [persist]);
 
-  const getCartTotal = useCallback(
-    () => cartItems.reduce((total, item) => total + item.price * item.quantity, 0),
-    [cartItems]
-  );
-
-  const getCartCount = useCallback(
-    () => cartItems.reduce((count, item) => count + item.quantity, 0),
-    [cartItems]
+  const getQuotationCount = useCallback(
+    () => quotationItems.reduce((count, item) => count + item.quantity, 0),
+    [quotationItems]
   );
 
   return {
-    cartItems,
+    quotationItems,
     addItem,
     removeItem,
     updateQuantity,
-    getCartTotal,
-    getCartCount,
-    clearCart,
+    getQuotationCount,
+    clearQuotation,
   };
 }

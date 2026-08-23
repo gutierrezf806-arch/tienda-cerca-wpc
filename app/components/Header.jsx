@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useCart } from "../hooks/useCart.js";
+import { useQuotation } from "../hooks/useQuotation.js";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -14,8 +14,8 @@ const navLinks = [
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { getCartCount } = useCart();
-  const cartCount = getCartCount();
+  const { getQuotationCount } = useQuotation();
+  const quotationCount = getQuotationCount();
 
   return (
     <header className="sticky top-0 z-50 border-b border-brand-charcoal/40 bg-brand-black text-brand-cream">
@@ -37,7 +37,7 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <Link href="/carrito" aria-label="Carrito" className="relative">
+          <Link href="/carrito" aria-label="Cotización" className="relative">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -49,12 +49,12 @@ export default function Header() {
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.87-4.735 2.201-7.244a.75.75 0 0 0-.741-.856H5.106M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                d="M9 12h6m-6 3.75h6M5.25 6h13.5A1.5 1.5 0 0 1 20.25 7.5v13.5a.75.75 0 0 1-1.086.67L15 19.5l-2.914 1.457a.75.75 0 0 1-.672 0L8.5 19.5l-3.164 1.67A.75.75 0 0 1 4.25 21V7.5A1.5 1.5 0 0 1 5.75 6Zm2.25-2.25h9a.75.75 0 0 1 .75.75V6h-10.5v-1.5a.75.75 0 0 1 .75-.75Z"
               />
             </svg>
-            {cartCount > 0 && (
+            {quotationCount > 0 && (
               <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-brand-red text-xs font-bold text-brand-cream">
-                {cartCount}
+                {quotationCount}
               </span>
             )}
           </Link>

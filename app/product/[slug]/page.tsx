@@ -6,7 +6,7 @@ import Link from "next/link";
 import Header from "../../components/Header.jsx";
 import Footer from "../../components/Footer.jsx";
 import ProductCard from "../../components/ProductCard.jsx";
-import { useCart } from "../../hooks/useCart.js";
+import { useQuotation } from "../../hooks/useQuotation.js";
 
 function parseOptions(value: string) {
   return value
@@ -43,7 +43,7 @@ function renderStars(rating: number) {
 export default function ProductDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const router = useRouter();
-  const { addItem } = useCart();
+  const { addItem } = useQuotation();
 
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -82,7 +82,7 @@ export default function ProductDetailPage() {
         .slice(0, 3)
     : [];
 
-  function handleAddToCart() {
+  function handleAddToQuotation() {
     if (!product) return;
 
     addItem({
@@ -217,14 +217,14 @@ export default function ProductDetailPage() {
                   <div className="flex flex-col gap-3 sm:flex-row">
                     <button
                       type="button"
-                      onClick={handleAddToCart}
+                      onClick={handleAddToQuotation}
                       className={`flex-1 rounded border py-2 text-sm font-display uppercase tracking-wide transition-colors ${
                         isAdded
                           ? "border-brand-gold bg-brand-gold text-brand-black"
                           : "border-brand-red bg-transparent text-brand-red hover:bg-brand-red hover:text-brand-cream"
                       }`}
                     >
-                      {isAdded ? "¡Agregado!" : "Agregar al Carrito"}
+                      {isAdded ? "¡Agregado!" : "Agregar a Cotización"}
                     </button>
 
                     <button

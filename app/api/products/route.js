@@ -2,7 +2,8 @@ import fs from "fs";
 import path from "path";
 import { google } from "googleapis";
 
-const SPREADSHEET_ID = "14oUqI1o_FJPennbj4wf5RuBaaEQBkUCNUhe2ixfpyXc";
+const SPREADSHEET_ID =
+  process.env.GOOGLE_SHEET_ID || "14oUqI1o_FJPennbj4wf5RuBaaEQBkUCNUhe2ixfpyXc";
 const RANGE = "Hoja 1!A1:M";
 const CREDENTIALS_PATH = path.join(
   process.cwd(),
