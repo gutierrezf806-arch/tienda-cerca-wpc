@@ -8,27 +8,16 @@ import Footer from "../../components/Footer.jsx";
 import ProductCard from "../../components/ProductCard.jsx";
 import { useQuotation } from "../../hooks/useQuotation.js";
 
-function parseOptions(value: string) {
-  return value
-    .split(",")
-    .map((option) => option.trim())
-    .filter(Boolean);
-}
-
 type Product = {
   id: string;
   name: string;
   description: string;
   price: string;
-  size: string;
-  color: string;
   image: string;
   category: string;
   slug: string;
   rating: string;
-  reviews_count: string;
   material: string;
-  care_instruction: string;
 };
 
 function formatCLP(value: number) {
@@ -47,10 +36,7 @@ export default function ProductDetailPage() {
 
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedSize, setSelectedSize] = useState("");
-  const [selectedColor, setSelectedColor] = useState("");
   const [isAdded, setIsAdded] = useState(false);
-  const [loadedProductId, setLoadedProductId] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     fetch("/api/products")
@@ -67,14 +53,6 @@ export default function ProductDetailPage() {
   }, []);
 
   const product = products.find((item) => item.slug === slug);
-  const availableSizes = product ? parseOptions(product.size) : [];
-  const availableColors = product ? parseOptions(product.color) : [];
-
-  if (product && product.id !== loadedProductId) {
-    setLoadedProductId(product.id);
-    setSelectedSize(availableSizes[0] ?? "");
-    setSelectedColor(availableColors[0] ?? "");
-  }
 
   const relatedProducts = product
     ? products
@@ -89,8 +67,6 @@ export default function ProductDetailPage() {
       id: product.id,
       name: product.name,
       price: parseInt(product.price),
-      size: selectedSize,
-      color: selectedColor,
     });
 
     setIsAdded(true);
@@ -154,7 +130,6 @@ export default function ProductDetailPage() {
                   {product.rating && (
                     <p className="text-sm text-brand-cream/70">
                       {renderStars(parseFloat(product.rating))} {product.rating}
-                      {product.reviews_count && ` (${product.reviews_count} reviews)`}
                     </p>
                   )}
 
@@ -163,56 +138,6 @@ export default function ProductDetailPage() {
                   </p>
 
                   <p className="text-sm text-brand-cream/70">{product.description}</p>
-
-                  <div className="flex flex-col gap-4">
-                    {availableSizes.length > 0 && (
-                      <div>
-                        <span className="mb-2 block text-xs uppercase tracking-wide text-brand-cream/60">
-                          Talla
-                        </span>
-                        <div className="flex flex-wrap gap-2">
-                          {availableSizes.map((size) => (
-                            <button
-                              key={size}
-                              type="button"
-                              onClick={() => setSelectedSize(size)}
-                              className={`flex h-8 w-8 items-center justify-center rounded border text-xs transition-colors ${
-                                selectedSize === size
-                                  ? "border-brand-gold bg-brand-gold text-brand-black"
-                                  : "border-brand-charcoal text-brand-cream hover:border-brand-gold hover:text-brand-gold"
-                              }`}
-                            >
-                              {size}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    {availableColors.length > 0 && (
-                      <div>
-                        <span className="mb-2 block text-xs uppercase tracking-wide text-brand-cream/60">
-                          Color
-                        </span>
-                        <div className="flex flex-wrap gap-2">
-                          {availableColors.map((color) => (
-                            <button
-                              key={color}
-                              type="button"
-                              onClick={() => setSelectedColor(color)}
-                              className={`rounded border px-3 py-1.5 text-xs transition-colors ${
-                                selectedColor === color
-                                  ? "border-brand-gold bg-brand-gold text-brand-black"
-                                  : "border-brand-charcoal text-brand-cream hover:border-brand-gold hover:text-brand-gold"
-                              }`}
-                            >
-                              {color}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
 
                   <div className="flex flex-col gap-3 sm:flex-row">
                     <button
@@ -236,25 +161,12 @@ export default function ProductDetailPage() {
                     </button>
                   </div>
 
-                  {(product.material || product.care_instruction) && (
+                  {product.material && (
                     <div className="mt-4 flex flex-col gap-2 rounded-lg border border-brand-charcoal/40 bg-brand-surface p-4">
                       <h2 className="font-display text-sm uppercase tracking-wide text-brand-gold">
-                        Material &amp; Care
+                        Material
                       </h2>
-                      {product.material && (
-                        <p className="text-sm text-brand-cream/70">
-                          <span className="font-semibold text-brand-cream">Material: </span>
-                          {product.material}
-                        </p>
-                      )}
-                      {product.care_instruction && (
-                        <p className="text-sm text-brand-cream/70">
-                          <span className="font-semibold text-brand-cream">
-                            Care Instructions:{" "}
-                          </span>
-                          {product.care_instruction}
-                        </p>
-                      )}
+                      <p className="text-sm text-brand-cream/70">{product.material}</p>
                     </div>
                   )}
                 </div>

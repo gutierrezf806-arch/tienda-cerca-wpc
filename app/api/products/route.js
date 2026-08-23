@@ -39,11 +39,24 @@ export async function GET(request) {
     const [headers, ...dataRows] = rows;
 
     const products = dataRows.map((row) => {
-      const product = {};
+      const raw = {};
       headers.forEach((header, index) => {
-        product[header] = row[index] ?? "";
+        raw[header] = row[index] ?? "";
       });
-      return product;
+
+      return {
+        id: raw.id,
+        slug: raw.id,
+        name: raw.nombre,
+        description: raw.description,
+        price: raw.precio,
+        category: raw["categoría"],
+        material: raw.material,
+        image: raw.imagen,
+        stock: raw.stock,
+        rating: raw.rating,
+        destacado: raw.destacado,
+      };
     });
 
     return Response.json({ success: true, products });

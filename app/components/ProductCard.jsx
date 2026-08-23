@@ -1,12 +1,27 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
+import { useQuotation } from "../hooks/useQuotation.js";
 
 function formatCLP(price) {
   return `$${Math.round(price).toLocaleString("es-CL")}`;
 }
 
 export default function ProductCard({ slug, image, name, description, price, category }) {
+  const { addItem } = useQuotation();
+  const [isAdded, setIsAdded] = useState(false);
+
+  function handleAddToQuotation(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    addItem({ id: slug, name, price });
+
+    setIsAdded(true);
+    setTimeout(() => setIsAdded(false), 1500);
+  }
+
   return (
     <Link
       href={`/product/${slug}`}
@@ -44,6 +59,18 @@ export default function ProductCard({ slug, image, name, description, price, cat
         <p className="font-sans text-lg font-bold text-brand-gold">
           {formatCLP(price)}
         </p>
+
+        <button
+          type="button"
+          onClick={handleAddToQuotation}
+          className={`mt-auto w-full rounded border py-2 text-xs font-display uppercase tracking-wide transition-colors ${
+            isAdded
+              ? "border-brand-gold bg-brand-gold text-brand-black"
+              : "border-brand-red bg-transparent text-brand-red hover:bg-brand-red hover:text-brand-cream"
+          }`}
+        >
+          {isAdded ? "¡Agregado!" : "Agregar a Cotización"}
+        </button>
       </div>
     </Link>
   );

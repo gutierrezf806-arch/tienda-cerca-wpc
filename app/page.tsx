@@ -5,15 +5,11 @@ import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import ProductCard from "./components/ProductCard.jsx";
 
-const CATEGORIES = ["Todos", "Urban Code", "No Limits"];
-
 type Product = {
   id: string;
   name: string;
   description: string;
   price: string;
-  size: string;
-  color: string;
   image: string;
   category: string;
   slug: string;
@@ -38,6 +34,11 @@ export default function Home() {
       });
   }, []);
 
+  const categories = [
+    "Todos",
+    ...Array.from(new Set(products.map((product) => product.category).filter(Boolean))),
+  ];
+
   const filteredProducts =
     selectedCategory === "Todos"
       ? products
@@ -59,7 +60,7 @@ export default function Home() {
           </div>
 
           <div className="mb-8 flex flex-wrap gap-3">
-            {CATEGORIES.map((category) => (
+            {categories.map((category) => (
               <button
                 key={category}
                 type="button"
