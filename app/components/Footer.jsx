@@ -1,13 +1,7 @@
 import Link from "next/link";
+import Wordmark from "./Wordmark.jsx";
 
 const linkSections = [
-  {
-    title: "Categorías",
-    links: [
-      { href: "/catalogo/polerones", label: "Polerones" },
-      { href: "/catalogo/poleras", label: "Poleras" },
-    ],
-  },
   {
     title: "Ayuda",
     links: [
@@ -76,12 +70,12 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-brand-charcoal/40 bg-brand-black px-6 pb-6 pt-12 text-brand-cream">
+    <footer className="border-t border-brand-stone/30 bg-brand-graphite px-6 pb-6 pt-12 text-brand-paper">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
           <div className="flex flex-col gap-4">
-            <Link href="/" className="font-display text-xl uppercase tracking-tight text-brand-cream">
-              Tu Marca Streetwear
+            <Link href="/" className="text-xl">
+              <Wordmark />
             </Link>
 
             <div className="flex items-center gap-4">
@@ -92,7 +86,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="text-brand-cream/70 transition-colors hover:text-brand-gold"
+                  className="text-brand-paper/70 transition-colors hover:text-brand-wood"
                 >
                   {social.icon}
                 </a>
@@ -100,10 +94,10 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:col-span-2">
+          <div className="grid grid-cols-2 gap-8 md:col-span-2">
             {linkSections.map((section) => (
               <div key={section.title} className="flex flex-col gap-3">
-                <h3 className="font-display text-sm uppercase tracking-wide text-brand-gold">
+                <h3 className="font-display text-sm uppercase tracking-wide text-brand-wood">
                   {section.title}
                 </h3>
                 <ul className="flex flex-col gap-2">
@@ -111,7 +105,7 @@ export default function Footer() {
                     <li key={link.href}>
                       <Link
                         href={link.href}
-                        className="text-sm text-brand-cream/70 transition-colors hover:text-brand-cream"
+                        className="text-sm text-brand-paper/70 transition-colors hover:text-brand-paper"
                       >
                         {link.label}
                       </Link>
@@ -123,9 +117,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-brand-charcoal/30 pt-6">
-          <p className="text-center text-xs text-brand-cream/40">
-            © 2025 Tu Marca Streetwear. Todos los derechos reservados.
+        <div className="mt-10 border-t border-brand-stone/30 pt-6">
+          <p className="text-center text-xs text-brand-paper/40">
+            © 2026 Australis Haus. Todos los derechos reservados.
           </p>
         </div>
       </div>

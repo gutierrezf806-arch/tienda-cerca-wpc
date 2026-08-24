@@ -1,35 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F3EEE4;
+  --foreground: #26292B;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  --color-brand-black: #100908;
-  --color-brand-cream: #F7EFEC;
-  --color-brand-red: #C53535;
-  --color-brand-gold: #C4952B;
-  --color-brand-charcoal: #4F4543;
-  --color-brand-steel: #293946;
-  --color-brand-taupe: #6E665B;
-  --color-brand-surface: #251D1B;
-  --color-brand-surface-alt: #372F28;
+  /* Australis Haus brand palette */
+  --color-brand-graphite: #26292B; /* Grafito Fueguino */
+  --color-brand-wood: #B07C4E; /* Madera Lenga */
+  --color-brand-green: #5C6B54; /* Verde Coirón */
+  --color-brand-stone: #8C887B; /* Piedra Seca */
+  --color-brand-paper: #F3EEE4; /* Crema Papel */
 
-  --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-display: var(--font-anton), Impact, sans-serif;
+  --font-sans: var(--font-karla), system-ui, sans-serif;
+  --font-display: var(--font-archivo), system-ui, sans-serif;
+  --font-logo: var(--font-poppins), system-ui, sans-serif;
 
   --tracking-tightest: -0.03em;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
