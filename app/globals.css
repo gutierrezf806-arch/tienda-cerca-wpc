@@ -23,6 +23,10 @@
   --tracking-tightest: -0.03em;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

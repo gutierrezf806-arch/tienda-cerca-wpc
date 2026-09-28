@@ -1,0 +1,241 @@
+<!-- ============================================================
+     AUSTRALIS HAUS · Sección "Instalación paso a paso"
+     HTML plano, sin dependencias. Pegar dentro del <body>.
+     La fuente Karla/Archivo se carga con el <link> de abajo:
+     muévelo al <head> de tu página si prefieres.
+
+     REEMPLAZAR: los 7 src="..." de imagen por tus rutas reales.
+     ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Karla:wght@400;500;600&display=swap">
+
+<style>
+/* --- Australis Haus · estilos de la sección (prefijo .ah- para no chocar) --- */
+.ah-inst { --ah-ink:#26292B; --ah-paper:#F2EDE1; --ah-card:#F7F3EA;
+  --ah-line:#C9C1B1; --ah-mute:#6E6252; --ah-body:#5A554C; --ah-copper:#8A5A2E; --ah-copper-b:#B07C4E;
+  background:var(--ah-paper); color:var(--ah-ink); font-family:'Karla',system-ui,sans-serif;
+  padding:72px 56px 88px; max-width:1700px; margin:0 auto; box-sizing:border-box; }
+.ah-inst *, .ah-inst *::before, .ah-inst *::after { box-sizing:border-box; }
+.ah-inst h2, .ah-inst h3, .ah-inst .ah-h { font-family:'Archivo',system-ui,sans-serif; font-weight:600;
+  text-transform:uppercase; margin:0; }
+.ah-inst p { margin:0; }
+
+/* marco tipo plano con marcas de esquina */
+.ah-frame { position:relative; border:1px solid var(--ah-line); background:var(--ah-card); }
+.ah-frame > .ah-c { position:absolute; width:11px; height:11px; color:rgba(38,41,43,.55); }
+.ah-frame > .ah-c::before, .ah-frame > .ah-c::after { content:""; position:absolute; background:currentColor; }
+.ah-frame > .ah-c::before { left:5px; top:0; width:1px; height:100%; }
+.ah-frame > .ah-c::after  { top:5px; left:0; width:100%; height:1px; }
+.ah-c.tl{top:-6px;left:-6px} .ah-c.tr{top:-6px;right:-6px}
+.ah-c.bl{bottom:-6px;left:-6px} .ah-c.br{bottom:-6px;right:-6px}
+
+.ah-head { display:flex; justify-content:space-between; align-items:flex-end; gap:40px; flex-wrap:wrap;
+  border-bottom:1px solid var(--ah-line); padding-bottom:26px; margin-bottom:44px; }
+.ah-kicker { font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--ah-mute); }
+.ah-title { font-size:clamp(32px,3.4vw,54px); line-height:1; }
+.ah-lead { font-size:18px; line-height:1.55; max-width:58ch; color:var(--ah-body); }
+.ah-facts { display:flex; gap:34px; flex-wrap:wrap; }
+.ah-fact { display:flex; flex-direction:column; gap:4px; }
+.ah-fact span:first-child { font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--ah-mute); }
+.ah-fact span:last-child { font-family:'Archivo',sans-serif; font-weight:600; font-size:24px; text-transform:uppercase; }
+
+.ah-cols { display:grid; grid-template-columns:minmax(0,380px) minmax(0,1fr); gap:52px; align-items:start; }
+.ah-aside { display:flex; flex-direction:column; gap:18px; position:sticky; top:32px; }
+.ah-hero { padding:26px; aspect-ratio:3/4; }
+.ah-hero-clip { position:relative; width:100%; height:100%; overflow:hidden; }
+.ah-hero-clip img { position:absolute; width:2018px; max-width:none; left:-672px; top:-116px; }
+.ah-tags { display:flex; gap:8px; flex-wrap:wrap; }
+.ah-tag { display:inline-flex; align-items:center; font-size:11px; letter-spacing:.02em; padding:4px 10px;
+  border:1px solid var(--ah-line); color:var(--ah-body); }
+.ah-tag.is-accent { border-color:var(--ah-copper-b); color:var(--ah-copper); }
+
+.ah-steps { display:flex; flex-direction:column; gap:34px; }
+.ah-stage { padding:34px 36px 36px; display:flex; flex-direction:column; gap:28px; }
+.ah-stage-head { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+.ah-num { font-family:'Archivo',sans-serif; font-weight:500; font-size:26px; width:58px; height:58px; flex:none;
+  border:1px solid var(--ah-ink); display:flex; align-items:center; justify-content:center; }
+.ah-stage-head h3 { font-size:clamp(24px,2.2vw,36px); line-height:1.02; }
+.ah-stage-meta { margin-left:auto; font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ah-mute); white-space:nowrap; }
+
+.ah-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1px;
+  background:var(--ah-line); border:1px solid var(--ah-line); }
+.ah-cell { background:var(--ah-card); padding:20px; display:flex; flex-direction:column; gap:14px; }
+/* duotono: la foto toma el gris de marca. Quítalo si las quieres a color. */
+.ah-shot { position:relative; overflow:hidden; aspect-ratio:4/3; border:1px solid var(--ah-line); background:#E8E1D4; }
+.ah-shot img { width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(1) contrast(1.05); }
+.ah-shot::after { content:""; position:absolute; inset:0; pointer-events:none;
+  background:#8C7A63; mix-blend-mode:color; opacity:.55; }
+.ah-cap { display:flex; gap:12px; align-items:baseline; }
+.ah-cap b { font-family:'Archivo',sans-serif; font-weight:600; font-size:15px; color:var(--ah-copper); flex:none; }
+.ah-cap-t { font-family:'Archivo',sans-serif; font-weight:600; font-size:18px; text-transform:uppercase; }
+.ah-cap-d { font-size:15px; line-height:1.5; color:var(--ah-body); }
+
+.ah-note { display:flex; gap:14px; align-items:flex-start; border-left:2px solid var(--ah-copper-b); padding-left:16px; }
+.ah-note span:first-child { font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ah-copper); white-space:nowrap; }
+.ah-note span:last-child { font-size:15px; line-height:1.55; color:var(--ah-body); }
+
+.ah-foot { display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap;
+  border-top:1px solid var(--ah-line); padding-top:22px; }
+.ah-btn { display:inline-flex; align-items:center; justify-content:center; padding:13px 22px;
+  font-size:13px; letter-spacing:.1em; text-transform:uppercase; text-decoration:none; cursor:pointer;
+  border:1px solid var(--ah-line); color:var(--ah-ink); background:transparent; transition:background .18s ease; }
+.ah-btn-primary { background:var(--ah-ink); border-color:var(--ah-ink); color:var(--ah-paper); }
+.ah-btn-primary:hover { background:#3A3E41; }
+.ah-btn-secondary:hover { background:rgba(38,41,43,.07); }
+.ah-btn:focus-visible { outline:2px solid var(--ah-copper-b); outline-offset:2px; }
+
+@media (max-width:900px){
+  .ah-inst { padding:48px 20px 64px; }
+  .ah-cols { grid-template-columns:1fr; gap:34px; }
+  .ah-aside { position:static; }
+  .ah-hero { aspect-ratio:4/3; }
+  .ah-stage { padding:24px 20px 26px; }
+  .ah-stage-meta { margin-left:0; width:100%; }
+}
+</style>
+
+<section class="ah-inst" id="instalacion">
+
+  <div class="ah-head">
+    <div style="display:flex; flex-direction:column; gap:12px; min-width:300px;">
+      <span class="ah-kicker">Instalación</span>
+      <h2 class="ah-title">Dos etapas, seis movimientos</h2>
+      <p class="ah-lead">Primero se paran los postes, después se rellena el paño. No hay corte, ni soldadura, ni pintura: todo el sistema calza por encaje.</p>
+    </div>
+    <div class="ah-facts">
+      <div class="ah-fact"><span>Herramienta</span><span>Común</span></div>
+      <div class="ah-fact"><span>Personas</span><span>Dos</span></div>
+      <div class="ah-fact"><span>Tiempo</span><span>Un fin de semana</span></div>
+    </div>
+  </div>
+
+  <div class="ah-cols">
+
+    <aside class="ah-aside">
+      <div class="ah-frame ah-hero">
+        <i class="ah-c tl"></i><i class="ah-c tr"></i><i class="ah-c bl"></i><i class="ah-c br"></i>
+        <div class="ah-hero-clip">
+          <!-- REEMPLAZAR: foto del poste sobre la placa base -->
+          <img src="img/poste-placa.png" alt="Poste WPC montado sobre su placa base">
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <span class="ah-h" style="font-size:22px;">Poste sobre placa</span>
+        <p style="font-size:15px; line-height:1.55; color:var(--ah-body);">La pieza que sostiene todo. Si los postes quedan a plomo y en línea, el resto del cerco se arma solo.</p>
+      </div>
+      <div class="ah-tags">
+        <span class="ah-tag">Sin soldadura</span>
+        <span class="ah-tag">Sin corte</span>
+        <span class="ah-tag is-accent">Autoconstrucción</span>
+      </div>
+    </aside>
+
+    <div class="ah-steps">
+
+      <div class="ah-frame ah-stage">
+        <i class="ah-c tl"></i><i class="ah-c tr"></i><i class="ah-c bl"></i><i class="ah-c br"></i>
+        <div class="ah-stage-head">
+          <span class="ah-num">01</span>
+          <h3>Instalación de postes</h3>
+          <span class="ah-stage-meta">Etapa base · 1 día</span>
+        </div>
+
+        <div class="ah-grid">
+          <div class="ah-cell">
+            <div class="ah-shot"><img src="img/paso-1-1.jpg" alt="Marcando la ubicación de la placa sobre el hormigón"></div>
+            <div class="ah-cap">
+              <b>1.1</b>
+              <div style="display:flex; flex-direction:column; gap:4px;">
+                <span class="ah-cap-t">Marca la ubicación</span>
+                <span class="ah-cap-d">Apoya la placa donde irá cada poste y marca los cuatro agujeros con ella misma como plantilla.</span>
+              </div>
+            </div>
+          </div>
+          <div class="ah-cell">
+            <div class="ah-shot"><img src="img/paso-1-2.jpg" alt="Perforando el hormigón y fijando los pernos de anclaje"></div>
+            <div class="ah-cap">
+              <b>1.2</b>
+              <div style="display:flex; flex-direction:column; gap:4px;">
+                <span class="ah-cap-t">Perfora y fija</span>
+                <span class="ah-cap-d">Perfora los puntos marcados y clava los pernos de anclaje hasta que asomen parejos.</span>
+              </div>
+            </div>
+          </div>
+          <div class="ah-cell">
+            <div class="ah-shot"><img src="img/paso-1-3.jpg" alt="Poste aplomado con nivel de burbuja apoyado"></div>
+            <div class="ah-cap">
+              <b>1.3</b>
+              <div style="display:flex; flex-direction:column; gap:4px;">
+                <span class="ah-cap-t">Monta y nivela</span>
+                <span class="ah-cap-d">Calza el poste en los topes de la placa, aplómalo en dos caras y aprieta.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ah-note">
+          <span>Ojo</span>
+          <span>Deja perfectos el primer y el último poste: son los que marcan la línea de todo el cerco. Los del medio se alinean con un lienzo entre ambos.</span>
+        </div>
+      </div>
+
+      <div class="ah-frame ah-stage">
+        <i class="ah-c tl"></i><i class="ah-c tr"></i><i class="ah-c bl"></i><i class="ah-c br"></i>
+        <div class="ah-stage-head">
+          <span class="ah-num">02</span>
+          <h3>Montaje del panel</h3>
+          <span class="ah-stage-meta">Etapa rápida · 20 min por paño</span>
+        </div>
+
+        <div class="ah-grid">
+          <div class="ah-cell">
+            <div class="ah-shot"><img src="img/paso-2-1.jpg" alt="Perfil inferior encajado entre dos postes"></div>
+            <div class="ah-cap">
+              <b>2.1</b>
+              <div style="display:flex; flex-direction:column; gap:4px;">
+                <span class="ah-cap-t">Perfil inferior</span>
+                <span class="ah-cap-d">Va entre poste y poste, apoyado en los clips. Define el nivel de todo el paño.</span>
+              </div>
+            </div>
+          </div>
+          <div class="ah-cell">
+            <div class="ah-shot"><img src="img/paso-2-2.jpg" alt="Deslizando un tablón WPC por la ranura del poste"></div>
+            <div class="ah-cap">
+              <b>2.2</b>
+              <div style="display:flex; flex-direction:column; gap:4px;">
+                <span class="ah-cap-t">Desliza los tablones</span>
+                <span class="ah-cap-d">Entran por la ranura del poste y calzan uno sobre otro hasta llegar a la altura.</span>
+              </div>
+            </div>
+          </div>
+          <div class="ah-cell">
+            <div class="ah-shot"><img src="img/paso-2-3.jpg" alt="Tapa de poste puesta a presión, paño terminado"></div>
+            <div class="ah-cap">
+              <b>2.3</b>
+              <div style="display:flex; flex-direction:column; gap:4px;">
+                <span class="ah-cap-t">Cierra arriba</span>
+                <span class="ah-cap-d">Perfil superior y tapas de poste a presión. El paño queda terminado, sin tornillo a la vista.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ah-note">
+          <span>Ojo</span>
+          <span>Arma un paño completo antes de pasar al siguiente: si un tablón quedó forzado, se nota al cerrar arriba y todavía se puede sacar.</span>
+        </div>
+      </div>
+
+      <div class="ah-foot">
+        <span style="font-size:16px; line-height:1.5; color:var(--ah-body); max-width:54ch;">Cada kit llega con las piezas cortadas a medida, rotuladas y con el instructivo impreso.</span>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a class="ah-btn ah-btn-primary" href="#kit">Ver el kit completo</a>
+          <a class="ah-btn ah-btn-secondary" href="#instructivo">Descargar instructivo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

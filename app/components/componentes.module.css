@@ -1,0 +1,128 @@
+.cp-root {
+  --cp-ink: #26292b;
+  --cp-card: #f7f3ea;
+  --cp-line: #c9c1b1;
+  --cp-mute: #6e6252;
+  --cp-body: #5a554c;
+  max-width: 1280px;
+  margin: 0 auto;
+  color: var(--cp-ink);
+  font-family: var(--font-karla), system-ui, sans-serif;
+  box-sizing: border-box;
+}
+.cp-root *,
+.cp-root *::before,
+.cp-root *::after {
+  box-sizing: border-box;
+}
+.cp-root h3 {
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 0;
+}
+.cp-root p {
+  margin: 0;
+}
+
+.cp-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background: var(--cp-line);
+  border: 1px solid var(--cp-line);
+}
+@media (min-width: 640px) {
+  .cp-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  .cp-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.cp-cell {
+  background: var(--cp-card);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.cp-shot {
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cp-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.cp-cap {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.cp-num {
+  font-family: var(--font-archivo), sans-serif;
+  font-weight: 500;
+  font-size: 22px;
+  width: 48px;
+  height: 48px;
+  flex: none;
+  border: 1px solid var(--cp-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cp-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.cp-title {
+  font-size: 20px;
+  line-height: 1.1;
+}
+.cp-desc {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--cp-body);
+}
+
+.cp-explode {
+  margin-top: 34px;
+  border: 1px solid var(--cp-line);
+  background: var(--cp-card);
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: center;
+}
+@media (min-width: 1024px) {
+  .cp-explode {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    padding: 32px;
+    gap: 40px;
+  }
+}
+.cp-explode-text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cp-explode-title {
+  font-size: clamp(22px, 2.2vw, 30px);
+  line-height: 1.05;
+}
+.cp-explode img {
+  width: 100%;
+  max-height: 560px;
+  object-fit: contain;
+  display: block;
+}

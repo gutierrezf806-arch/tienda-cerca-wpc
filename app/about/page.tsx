@@ -13,10 +13,9 @@ export default function AboutPage() {
           </h1>
 
           <p className="mt-6 text-base leading-relaxed text-brand-stone sm:text-lg">
-            Fabricamos cercos en WPC (madera plástica) en Punta Arenas, pensados
-            para resistir el clima patagónico sin perder su terminación natural.
-            Nuestro producto, el panel Full Privacy, combina durabilidad y una
-            instalación simple para proyectos residenciales.
+            Importamos cercos WPC con certificación CE directo desde fábrica y los
+            traemos a Punta Arenas. Un sistema durable, de instalación simple y con
+            asesoría local en Punta Arenas.
           </p>
         </section>
       </main>

@@ -1,0 +1,365 @@
+/* Australis Haus · estilos de la sección "Instalación paso a paso" (prefijo ah- original) */
+.ah-inst {
+  --ah-ink: #26292b;
+  --ah-paper: #f2ede1;
+  --ah-card: #f7f3ea;
+  --ah-line: #c9c1b1;
+  --ah-mute: #6e6252;
+  --ah-body: #5a554c;
+  --ah-copper: #8a5a2e;
+  --ah-copper-b: #b07c4e;
+  background: var(--ah-paper);
+  color: var(--ah-ink);
+  font-family: var(--font-karla), system-ui, sans-serif;
+  padding: 72px 56px 88px;
+  max-width: 1700px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.ah-inst *,
+.ah-inst *::before,
+.ah-inst *::after {
+  box-sizing: border-box;
+}
+.ah-inst h2,
+.ah-inst h3,
+.ah-inst .ah-h {
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 0;
+}
+.ah-inst p {
+  margin: 0;
+}
+
+/* marco tipo plano con marcas de esquina */
+.ah-frame {
+  position: relative;
+  border: 1px solid var(--ah-line);
+  background: var(--ah-card);
+}
+.ah-frame > .ah-c {
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  color: rgba(38, 41, 43, 0.55);
+}
+.ah-frame > .ah-c::before,
+.ah-frame > .ah-c::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+}
+.ah-frame > .ah-c::before {
+  left: 5px;
+  top: 0;
+  width: 1px;
+  height: 100%;
+}
+.ah-frame > .ah-c::after {
+  top: 5px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+}
+.ah-c.tl {
+  top: -6px;
+  left: -6px;
+}
+.ah-c.tr {
+  top: -6px;
+  right: -6px;
+}
+.ah-c.bl {
+  bottom: -6px;
+  left: -6px;
+}
+.ah-c.br {
+  bottom: -6px;
+  right: -6px;
+}
+
+.ah-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--ah-line);
+  padding-bottom: 26px;
+  margin-bottom: 44px;
+}
+.ah-kicker {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ah-mute);
+}
+.ah-title {
+  font-size: clamp(32px, 3.4vw, 54px);
+  line-height: 1;
+}
+.ah-lead {
+  font-size: 18px;
+  line-height: 1.55;
+  max-width: 58ch;
+  color: var(--ah-body);
+}
+.ah-facts {
+  display: flex;
+  gap: 34px;
+  flex-wrap: wrap;
+}
+.ah-fact {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.ah-fact span:first-child {
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ah-mute);
+}
+.ah-fact span:last-child {
+  font-family: var(--font-archivo), sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+.ah-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
+  gap: 52px;
+  align-items: start;
+}
+.ah-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: sticky;
+  top: 32px;
+}
+.ah-hero {
+  padding: 26px;
+  aspect-ratio: 3 / 4;
+}
+.ah-hero-clip {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.ah-hero-clip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.ah-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.ah-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  padding: 4px 10px;
+  border: 1px solid var(--ah-line);
+  color: var(--ah-body);
+}
+.ah-tag.is-accent {
+  border-color: var(--ah-copper-b);
+  color: var(--ah-copper);
+}
+
+.ah-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+.ah-stage {
+  padding: 34px 36px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.ah-stage-head {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.ah-num {
+  font-family: var(--font-archivo), sans-serif;
+  font-weight: 500;
+  font-size: 26px;
+  width: 58px;
+  height: 58px;
+  flex: none;
+  border: 1px solid var(--ah-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ah-stage-head h3 {
+  font-size: clamp(24px, 2.2vw, 36px);
+  line-height: 1.02;
+}
+.ah-stage-meta {
+  margin-left: auto;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ah-mute);
+  white-space: nowrap;
+}
+
+.ah-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1px;
+  background: var(--ah-line);
+  border: 1px solid var(--ah-line);
+}
+.ah-cell {
+  background: var(--ah-card);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+/* duotono: la foto toma el gris de marca. Quítalo si las quieres a color. */
+.ah-shot {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--ah-line);
+  background: #e8e1d4;
+}
+.ah-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(1) contrast(1.05);
+}
+.ah-shot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: #8c7a63;
+  mix-blend-mode: color;
+  opacity: 0.55;
+}
+.ah-cap {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+.ah-cap b {
+  font-family: var(--font-archivo), sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ah-copper);
+  flex: none;
+}
+.ah-cap-t {
+  font-family: var(--font-archivo), sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+.ah-cap-d {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ah-body);
+}
+
+.ah-note {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  border-left: 2px solid var(--ah-copper-b);
+  padding-left: 16px;
+}
+.ah-note span:first-child {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ah-copper);
+  white-space: nowrap;
+}
+.ah-note span:last-child {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ah-body);
+}
+
+.ah-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--ah-line);
+  padding-top: 22px;
+}
+.ah-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 22px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid var(--ah-line);
+  color: var(--ah-ink);
+  background: transparent;
+  transition: background 0.18s ease;
+}
+.ah-btn-primary {
+  background: var(--ah-ink);
+  border-color: var(--ah-ink);
+  color: var(--ah-paper);
+}
+.ah-btn-primary:hover {
+  background: #3a3e41;
+}
+.ah-btn-secondary:hover {
+  background: rgba(38, 41, 43, 0.07);
+}
+.ah-btn:focus-visible {
+  outline: 2px solid var(--ah-copper-b);
+  outline-offset: 2px;
+}
+
+@media (max-width: 900px) {
+  .ah-inst {
+    padding: 48px 20px 64px;
+  }
+  .ah-cols {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+  .ah-aside {
+    position: static;
+  }
+  .ah-hero {
+    aspect-ratio: 4 / 3;
+  }
+  .ah-stage {
+    padding: 24px 20px 26px;
+  }
+  .ah-stage-meta {
+    margin-left: 0;
+    width: 100%;
+  }
+}

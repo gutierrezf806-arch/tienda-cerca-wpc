@@ -11,7 +11,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-brand-graphite/50" />
 
       <div className="relative mx-auto flex w-full max-w-7xl flex-col items-start gap-4 px-4 sm:px-6 sm:gap-6 lg:px-8">
-        <span className="font-sans text-sm uppercase tracking-wide text-brand-wood">
+        <span className="font-sans text-[22px] uppercase tracking-wide text-brand-wood">
           Panel de cerco WPC
         </span>
 
@@ -19,7 +19,7 @@ export default function Hero() {
           Un cerco. Una sola vez.
         </h1>
 
-        <p className="max-w-xl font-sans text-base text-brand-paper/80 sm:text-lg">
+        <p className="max-w-xl font-sans text-[22px] text-brand-paper/80">
           Resistente al paso del tiempo y al clima de la Patagonia. Fácil
           instalación, sin complicaciones.
         </p>

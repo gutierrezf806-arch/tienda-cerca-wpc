@@ -7,7 +7,8 @@ import Wordmark from "./Wordmark.jsx";
 
 const navLinks = [
   { href: "/#ventajas", label: "Ventajas" },
-  { href: "/#construccion", label: "Cómo está hecho" },
+  { href: "/#componentes", label: "Componentes" },
+  { href: "/#construccion", label: "Instalación" },
   { href: "/about", label: "Nosotros" },
   { href: "/contacto", label: "Contacto" },
 ];
@@ -27,7 +28,7 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="font-sans text-sm uppercase tracking-wide text-brand-paper/80 transition-colors hover:text-brand-wood"
+              className="font-sans text-base uppercase tracking-wide text-brand-paper/80 transition-colors hover:text-brand-wood"
             >
               {link.label}
             </Link>
@@ -35,7 +36,7 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <WhatsAppButton className="hidden rounded-full bg-brand-wood px-5 py-2 font-display text-xs uppercase tracking-wide text-brand-paper transition-colors hover:bg-brand-green md:inline-block">
+          <WhatsAppButton className="hidden rounded-full bg-brand-wood px-5 py-2 font-display text-[14.4px] uppercase tracking-wide text-brand-paper transition-colors hover:bg-brand-green md:inline-block">
             Consultar por WhatsApp
           </WhatsAppButton>
 
@@ -79,12 +80,12 @@ export default function Header() {
               key={link.href}
               href={link.href}
               onClick={() => setIsMenuOpen(false)}
-              className="rounded-md px-2 py-3 font-sans text-sm uppercase tracking-wide text-brand-paper/80 transition-colors hover:bg-brand-stone/20 hover:text-brand-wood"
+              className="rounded-md px-2 py-3 font-sans text-base uppercase tracking-wide text-brand-paper/80 transition-colors hover:bg-brand-stone/20 hover:text-brand-wood"
             >
               {link.label}
             </Link>
           ))}
-          <WhatsAppButton className="mt-2 w-full rounded-full bg-brand-wood px-5 py-2.5 font-display text-xs uppercase tracking-wide text-brand-paper transition-colors hover:bg-brand-green">
+          <WhatsAppButton className="mt-2 w-full rounded-full bg-brand-wood px-5 py-2.5 font-display text-base uppercase tracking-wide text-brand-paper transition-colors hover:bg-brand-green">
             Consultar por WhatsApp
           </WhatsAppButton>
         </nav>
