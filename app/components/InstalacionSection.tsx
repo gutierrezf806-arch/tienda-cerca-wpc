@@ -1,4 +1,14 @@
 import styles from "./instalacion.module.css";
+import { responsiveImage } from "../lib/responsiveImage";
+
+const posteImage = responsiveImage(
+  "/images/poste-placa.png",
+  { width: 900, height: 1200 },
+  { width: 800, height: 1067 }
+);
+
+const STEP_LARGE = { width: 1200, height: 900 };
+const STEP_MOBILE = { width: 800, height: 600 };
 
 const CORNER_POSITIONS = ["tl", "tr", "bl", "br"] as const;
 
@@ -75,10 +85,21 @@ const STAGE_2_STEPS: Step[] = [
 function StepGrid({ steps }: { steps: Step[] }) {
   return (
     <div className={styles["ah-grid"]}>
-      {steps.map((step) => (
+      {steps.map((step) => {
+        const image = responsiveImage(step.image, STEP_LARGE, STEP_MOBILE);
+        return (
         <div key={step.number} className={styles["ah-cell"]}>
           <div className={styles["ah-shot"]}>
-            <img src={step.image} alt={step.alt} />
+            <img
+              src={image.src}
+              srcSet={image.srcSet}
+              sizes="(min-width: 900px) 33vw, 90vw"
+              width={image.width}
+              height={image.height}
+              alt={step.alt}
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <div className={styles["ah-cap"]}>
             <b>{step.number}</b>
@@ -88,7 +109,8 @@ function StepGrid({ steps }: { steps: Step[] }) {
             </div>
           </div>
         </div>
-      ))}
+        );
+      })}
     </div>
   );
 }
@@ -121,7 +143,16 @@ export default function InstalacionSection() {
           <div className={`${styles["ah-frame"]} ${styles["ah-hero"]}`}>
             <CornerMarks />
             <div className={styles["ah-hero-clip"]}>
-              <img src="/images/poste-placa.png" alt="Poste WPC montado sobre su placa base" />
+              <img
+                src={posteImage.src}
+                srcSet={posteImage.srcSet}
+                sizes="(min-width: 900px) 380px, 100vw"
+                width={posteImage.width}
+                height={posteImage.height}
+                alt="Poste WPC montado sobre su placa base"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>

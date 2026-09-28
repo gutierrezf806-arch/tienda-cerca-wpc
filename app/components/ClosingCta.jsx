@@ -1,12 +1,25 @@
 import WhatsAppButton from "./WhatsAppButton.jsx";
+import { responsiveImage } from "../lib/responsiveImage";
+
+const ambienteImage = responsiveImage(
+  "/images/04-ambiente-piscina.jpg",
+  { width: 1600, height: 557 },
+  { width: 800, height: 278 }
+);
 
 export default function ClosingCta() {
   return (
     <section className="relative flex min-h-[60vh] items-center justify-center overflow-hidden bg-brand-graphite px-4 py-20 text-center sm:px-6 lg:px-8">
       <img
-        src="/images/04-ambiente-piscina.jpg"
+        src={ambienteImage.src}
+        srcSet={ambienteImage.srcSet}
+        sizes="100vw"
+        width={ambienteImage.width}
+        height={ambienteImage.height}
         alt="Cerco WPC Full Privacy en un espacio con piscina"
         className="absolute inset-0 h-full w-full object-cover"
+        loading="lazy"
+        decoding="async"
       />
       <div className="absolute inset-0 bg-brand-graphite/70" />
 

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Archivo, Karla, Poppins } from "next/font/google";
 import "./globals.css";
 
@@ -22,6 +22,10 @@ export const metadata: Metadata = {
   title: "Australis Haus | Cercos WPC en Punta Arenas",
   description:
     "Full Privacy: panel de cerco WPC (madera plástica) resistente y de fácil instalación, fabricado en Punta Arenas. Consulta por WhatsApp.",
+};
+
+export const viewport: Viewport = {
+  colorScheme: "only light",
 };
 
 export default function RootLayout({

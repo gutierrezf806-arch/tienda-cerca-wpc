@@ -1,4 +1,13 @@
 import styles from "./componentes.module.css";
+import { responsiveImage } from "../lib/responsiveImage";
+
+const PIEZA_LARGE = { width: 1200, height: 900 };
+const PIEZA_MOBILE = { width: 800, height: 600 };
+const EXPLODE_IMAGE = responsiveImage(
+  "/images/componente-07-vista-ensamble.png",
+  { width: 1200, height: 960 },
+  { width: 800, height: 640 }
+);
 
 type Componente = {
   number: string;
@@ -59,10 +68,21 @@ export default function ComponentesSection() {
   return (
     <div className={styles["cp-root"]}>
       <div className={styles["cp-grid"]}>
-        {COMPONENTES.map((item) => (
+        {COMPONENTES.map((item) => {
+          const image = responsiveImage(item.image, PIEZA_LARGE, PIEZA_MOBILE);
+          return (
           <div key={item.number} className={styles["cp-cell"]}>
             <div className={styles["cp-shot"]}>
-              <img src={item.image} alt={item.alt} />
+              <img
+                src={image.src}
+                srcSet={image.srcSet}
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                width={image.width}
+                height={image.height}
+                alt={item.alt}
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div className={styles["cp-cap"]}>
               <span className={styles["cp-num"]}>{item.number}</span>
@@ -72,7 +92,8 @@ export default function ComponentesSection() {
               </div>
             </div>
           </div>
-        ))}
+          );
+        })}
       </div>
 
       <div className={styles["cp-explode"]}>
@@ -84,8 +105,14 @@ export default function ComponentesSection() {
           </p>
         </div>
         <img
-          src="/images/componente-07-vista-ensamble.png"
+          src={EXPLODE_IMAGE.src}
+          srcSet={EXPLODE_IMAGE.srcSet}
+          sizes="(min-width: 1024px) 700px, 100vw"
+          width={EXPLODE_IMAGE.width}
+          height={EXPLODE_IMAGE.height}
           alt="Vista explosionada del sistema con los 6 componentes numerados"
+          loading="lazy"
+          decoding="async"
         />
       </div>
     </div>

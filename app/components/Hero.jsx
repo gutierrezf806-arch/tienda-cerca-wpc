@@ -1,12 +1,26 @@
 import WhatsAppButton from "./WhatsAppButton.jsx";
+import { responsiveImage } from "../lib/responsiveImage";
+
+const heroImage = responsiveImage(
+  "/images/hero.png",
+  { width: 1944, height: 809 },
+  { width: 800, height: 333 }
+);
 
 export default function Hero() {
   return (
     <section className="relative flex h-[50vh] items-center overflow-hidden bg-brand-graphite md:h-[70vh]">
       <img
-        src="/images/hero.png"
+        src={heroImage.src}
+        srcSet={heroImage.srcSet}
+        sizes="100vw"
+        width={heroImage.width}
+        height={heroImage.height}
         alt="Cerco WPC Full Privacy instalado"
         className="absolute inset-0 h-full w-full object-cover"
+        loading="eager"
+        decoding="auto"
+        fetchPriority="high"
       />
       <div className="absolute inset-0 bg-brand-graphite/50" />
 
