@@ -4,7 +4,7 @@ export default function ClosingCta() {
   return (
     <section className="relative flex min-h-[60vh] items-center justify-center overflow-hidden bg-brand-graphite px-4 py-20 text-center sm:px-6 lg:px-8">
       <img
-        src="/images/04-ambiente-piscina.png"
+        src="/images/04-ambiente-piscina.jpg"
         alt="Cerco WPC Full Privacy en un espacio con piscina"
         className="absolute inset-0 h-full w-full object-cover"
       />
