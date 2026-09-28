@@ -3,7 +3,7 @@ import { responsiveImage } from "../lib/responsiveImage";
 
 const heroImage = responsiveImage(
   "/images/hero.png",
-  { width: 1944, height: 809 },
+  { width: 1944, height: 809, fileWidth: 2400 },
   { width: 800, height: 333 }
 );
 

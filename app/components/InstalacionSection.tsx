@@ -3,7 +3,7 @@ import { responsiveImage } from "../lib/responsiveImage";
 
 const posteImage = responsiveImage(
   "/images/poste-placa.png",
-  { width: 900, height: 1200 },
+  { width: 900, height: 1200, fileWidth: 1600 },
   { width: 800, height: 1067 }
 );
 
