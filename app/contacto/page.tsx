@@ -1,7 +1,7 @@
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 
-const EMAIL = "cl.urban.shop.25@gmail.com";
+const EMAIL = "cincotres.70asesoria@gmail.com";
 
 export default function ContactoPage() {
   return (

@@ -53,6 +53,13 @@ export default function Footer() {
                 </a>
               ))}
             </div>
+
+            <a
+              href="mailto:cincotres.70asesoria@gmail.com"
+              className="text-sm text-brand-paper/70 transition-colors hover:text-brand-paper"
+            >
+              cincotres.70asesoria@gmail.com
+            </a>
           </div>
 
           <div className="md:col-span-2">
