@@ -30,12 +30,12 @@ export default function Hero() {
         </span>
 
         <h1 className="max-w-2xl font-display uppercase leading-none tracking-tightest text-5xl text-brand-paper md:text-7xl">
-          Un cerco. Una sola vez.
+          Un cerco, una sola vez
         </h1>
 
         <p className="max-w-xl font-sans text-[22px] text-brand-paper/80">
-          Resistente al paso del tiempo y al clima de la Patagonia. Fácil
-          instalación, sin complicaciones.
+          Resistente al paso del tiempo y al clima de la Patagonia Fácil
+          instalación, sin complicaciones
         </p>
 
         <WhatsAppButton

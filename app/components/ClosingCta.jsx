@@ -24,8 +24,8 @@ export default function ClosingCta() {
       <div className="absolute inset-0 bg-brand-graphite/70" />
 
       <div className="relative flex flex-col items-center gap-6">
-        <h2 className="max-w-2xl font-display text-3xl uppercase tracking-tight text-brand-paper sm:text-4xl">
-          Disponible en Punta Arenas.
+        <h2 className="max-w-2xl font-display text-3xl normal-case tracking-tight text-brand-paper sm:text-4xl">
+          Disponible en Punta Arenas
         </h2>
 
         <WhatsAppButton
