@@ -34,6 +34,10 @@ export default function ClosingCta() {
         >
           Diseñemos tu proyecto
         </WhatsAppButton>
+
+        <p className="rounded-full bg-brand-wood px-6 py-2 font-sans text-base font-semibold text-brand-paper sm:px-8 sm:text-lg">
+          Despachamos en la Región de Magallanes
+        </p>
       </div>
     </section>
   );

@@ -3,6 +3,12 @@ import Footer from "../components/Footer.jsx";
 
 const EMAIL = "cincotres.70asesoria@gmail.com";
 
+const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "";
+const WHATSAPP_DISPLAY = `+${WHATSAPP_NUMBER.slice(0, 3)} ${WHATSAPP_NUMBER.slice(
+  3,
+  7
+)} ${WHATSAPP_NUMBER.slice(7, 11)}`;
+
 export default function ContactoPage() {
   return (
     <div className="flex flex-1 flex-col">
@@ -24,6 +30,15 @@ export default function ContactoPage() {
             className="mt-8 break-all text-lg font-semibold text-brand-wood underline decoration-brand-wood/40 underline-offset-4 transition-colors hover:text-brand-green sm:text-xl"
           >
             {EMAIL}
+          </a>
+
+          <a
+            href={`https://wa.me/${WHATSAPP_NUMBER}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 break-all text-lg font-semibold text-brand-wood underline decoration-brand-wood/40 underline-offset-4 transition-colors hover:text-brand-green sm:text-xl"
+          >
+            Whatsapp: {WHATSAPP_DISPLAY}
           </a>
         </section>
       </main>
